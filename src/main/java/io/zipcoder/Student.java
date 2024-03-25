@@ -61,7 +61,13 @@ public class Student {
     }
 
     public String toString() {
-        return "Student Name: " + getFirstName() + " " + getLastName() + "\n" + "> Average Score: " + Math.round(getAverageExamScore()) + "\n" + "> Exam Scores:\n" + "Exam 1 -> " + Math.round(examScores.get(0)) + "\n" + "Exam 2 -> " + Math.round(examScores.get(1)) + "\n" + "Exam 3 -> " + Math.round(examScores.get(2)) + "\n" + "Exam 4 -> " + Math.round(examScores.get(3));
+        return "Student Name: " + getFirstName() + " " + getLastName() + "\n" +
+                "> Average Score: " + Math.round(getAverageExamScore()) + "\n" +
+                "> Exam Scores:\n" +
+                "Exam 1 -> " + Math.round(examScores.get(0)) + "\n" +
+                "Exam 2 -> " + Math.round(examScores.get(1)) + "\n" +
+                "Exam 3 -> " + Math.round(examScores.get(2)) + "\n" +
+                "Exam 4 -> " + Math.round(examScores.get(3));
     }
 
 }

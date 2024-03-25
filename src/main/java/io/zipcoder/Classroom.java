@@ -3,7 +3,7 @@ package io.zipcoder;
 import java.util.*;
 
 public class Classroom {
-    private Student[] students;
+    public Student[] students;
 
     public Classroom(int maxNumberOfStudents) {
         this.students = new Student[maxNumberOfStudents];
@@ -44,13 +44,16 @@ public class Classroom {
 
     public void removeStudent(String firstName, String lastName) {
         for (int i = 0; i < students.length; i++) {
-            if (students[i] != null && students[i].getFirstName().equals(firstName) && students[i].getLastName().equals(lastName));
-            students[i] = null;
-
-            Arrays.sort(students);
+            if (students[i] != null && students[i].getFirstName().equals(firstName) && students[i].getLastName().equals(lastName)) {
+                students[i] = null;
+                break;
+            }
         }
     }
 
+// This method sorts an array of Student objects primarily by their average exam scores in descending order.
+// If there are students with the same average exam scores, it sorts them by first name and then by last name.
+// Any Student objects with a null average exam score are placed at the end of the sorted array.
     public Student[] getStudentsByScore() {
         Arrays.sort(students, Comparator.nullsLast(Comparator.comparing(Student::getAverageExamScore).reversed().thenComparing(Student::getFirstName).thenComparing(Student::getLastName)));
         return students;

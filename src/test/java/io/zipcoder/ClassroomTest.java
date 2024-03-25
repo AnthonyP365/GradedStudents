@@ -53,18 +53,25 @@ public class ClassroomTest {
 
     @Test
     public void removeStudentTest() {
-        int maxNumberOfStudents = 2;
-        Classroom classroom = new Classroom(maxNumberOfStudents);
-        Student student = new Student("Leon", "Hunter", null);
-        Student student1 = new Student("Do Not", "Remove", null);
+        Student s1 = new Student("Leon", "Hunter", null);
+        Student s2 = new Student("Donot", "Remove", null);
+        Student[] students = {s1, s2};
+        Classroom classroom = new Classroom(students);
 
-        classroom.addStudent(student);
-        classroom.addStudent(student1);
+        classroom.removeStudent("Leon", "Hunter");
 
-        Student[] expectedRemoveStudent = null;
-        Student[] actualRemoveStudent = classroom.removeStudent();
-
-        classroom.getStudents();
+        boolean studentRemoved = true;
+        for (Student student : students) {
+            if (student != null && student.equals(s1)) {
+                studentRemoved = false;
+                break;
+            }
+        }
+        Assert.assertTrue("Was student removed", studentRemoved);
     }
 
+    @Test
+    public void getStudentByScoreTest() {
+
+    }
 }
