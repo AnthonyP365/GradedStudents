@@ -1,13 +1,11 @@
 package io.zipcoder;
 import org.junit.Assert;
 import org.junit.Test;
-import java.util.ArrayList;
+import java.util.*;
 
 public class StudentTest {
-
     @Test
-    public void getExamScoresTest() {
-        // : Given
+    public void getExamScoresTest(){
         String firstName = "Leon";
         String lastName = "Hunter";
         ArrayList<Double> examScores = new ArrayList<>();
@@ -17,87 +15,80 @@ public class StudentTest {
         examScores.add(96.0);
         Student student = new Student(firstName, lastName, examScores);
 
-        // When
-        String expectedExamScores = "Exam Scores:\n" + "Exam 1 -> " + 100 + "\n" + "Exam 2 -> " + 95 + "\n" + "Exam 3 -> " + 123 + "\n" + "Exam 4 -> " + 96;
-        String actualExamScores = student.getExamScores();
+        String expectedExamScores = "[100.0, 95.0, 123.0, 96.0]";
+        String actualExamScores = student.getExamScores().toString();
 
-        // Then
         Assert.assertEquals(expectedExamScores, actualExamScores);
     }
 
     @Test
-    public void addExamScoreTest() {
-        // : Given
+    public void addExamScoresTest(){
         String firstName = "Leon";
         String lastName = "Hunter";
         ArrayList<Double> examScores = new ArrayList<>();
         Student student = new Student(firstName, lastName, examScores);
 
-        // When
         student.addExamScore(100.0);
-        String expectedAddExamScore = "Exam Scores:\n" + "Exam 1 -> " + 100;
-        String actualAddExamScore = student.getExamScores();
 
-        // Then
-        Assert.assertEquals(expectedAddExamScore, actualAddExamScore);
+        String expectedExamScores = "[100.0]";
+        String actualExamScores = student.getExamScores().toString();
+
+        Assert.assertEquals(expectedExamScores, actualExamScores);
     }
 
     @Test
-    public void setExamScoreTest() {
-        // : Given
+    public void setExamScoresTest(){
         String firstName = "Leon";
         String lastName = "Hunter";
         ArrayList<Double> examScores = new ArrayList<>();
+        examScores.add(100.0);
+        examScores.add(95.0);
         Student student = new Student(firstName, lastName, examScores);
-        student.addExamScore(100.0);
 
-        // When
         student.setExamScore(0, 150.0);
-        String expectedSetExamScore = "Exam Scores:\n" + "Exam 1 -> " + 150;
-        String actualSetExamScore = student.getExamScores();
 
-        // Then
-        Assert.assertEquals(expectedSetExamScore, actualSetExamScore);
+        String expectedExamScores = "[150.0, 95.0]";
+        String actualExamScores = student.getExamScores().toString();
+
+        Assert.assertEquals(expectedExamScores, actualExamScores);
     }
 
     @Test
-    public void getAverageExamScoreTest() {
-        // : Given
+    public void getAverageExamScoreTest(){
         String firstName = "Leon";
         String lastName = "Hunter";
         ArrayList<Double> examScores = new ArrayList<>();
         examScores.add(100.0);
         examScores.add(150.0);
         examScores.add(250.0);
-        examScores.add(0.0);
+        examScores.add(50.0);
         Student student = new Student(firstName, lastName, examScores);
 
-        // When
-        double expectedAverageExamScore = 125.0;
-        double actualAverageExamScore = student.getAverageExamScore();
+        Double expectedAverageExamScore = 137.5;
+        Double actualAverageExamScore = student.getAverageExamScore();
 
-        // Then
-        Assert.assertEquals(expectedAverageExamScore, actualAverageExamScore, 0.1);
+        Assert.assertEquals(expectedAverageExamScore, actualAverageExamScore);
     }
 
     @Test
-    public void toStringTest() {
-        // : Given
+    public void toStringTest(){
         String firstName = "Leon";
         String lastName = "Hunter";
         ArrayList<Double> examScores = new ArrayList<>();
         examScores.add(100.0);
-        examScores.add(150.0);
-        examScores.add(250.0);
-        examScores.add(0.0);
+        examScores.add(95.0);
         Student student = new Student(firstName, lastName, examScores);
 
-        // When
-        String expectedString = "Student Name: Leon Hunter" + "\n" + "> Average Score: " + 125 + "\n" + "> Exam Scores:\n" + "Exam 1 -> " + 100 + "\n" + "Exam 2 -> " + 150 + "\n" + "Exam 3 -> " + 250 + "\n" + "Exam 4 -> " + 0;
+        String expectedString = "Student Name: Leon Hunter\n" +
+                "> Average Score: 97.5\n" +
+                "> Exam Scores: [100.0, 95.0]";
+
         String actualString = student.toString();
 
-        // Then
         Assert.assertEquals(expectedString, actualString);
     }
+
+
+
 
 }
